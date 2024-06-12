@@ -1,4 +1,5 @@
 import 'package:fire5/functions/authfunction.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class authfire extends StatefulWidget {
@@ -17,6 +18,9 @@ class _authfireState extends State<authfire> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('authentication'),
+      ),
       body: Form(
         key: _formkey,
         child: Container(

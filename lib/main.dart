@@ -1,7 +1,9 @@
 import 'package:fire5/auther/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'auther/data.dart';
 
 
 void main() async{
@@ -19,7 +21,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: authfire(),
+      home: StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot){
+        if(snapshot.hasData){
+          return Data();
+        }
+        else{
+          return authfire();
+        }
+        } ,),
     );
   }
 }
